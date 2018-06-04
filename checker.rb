@@ -1,3 +1,8 @@
+def scan
+  brackets = gets.chomp.strip.scan(/[\(){}\[\]]/)
+  check_brackets(brackets)
+end
+
 def check_answer
   quit = false
   until quit
@@ -14,27 +19,18 @@ def check_answer
 end
 
 def check_brackets(brackets)
-  parenthesis=0
-  square_brackets=0
-  brace=0
+  parenthesis = 0
   brackets.each do|bracket|
     if bracket == "("
       parenthesis+=1
     elsif bracket ==")"
       parenthesis-=1
-
-    elsif bracket =="["
-      square_brackets+=1
-    elsif bracket =="]"
-      square_brackets-=1
-      
-    elsif bracket =="{"
-      brace+=1
-    elsif bracket =="}"
-      brace-=1
+    end
+    if bracket == -1
+      return
     end
   end
-  if brace + parenthesis + square_brackets == 0
+  if parenthesis == 0
     puts "верное кол-во скобок"
   else
     puts "неверное кол-во скобок"
