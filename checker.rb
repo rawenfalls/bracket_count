@@ -26,7 +26,7 @@ def check_brackets(expression)
     elsif bracket ==")"
       parenthesis-=1
     end
-    return if bracket.to_i.negative?
+    return if parenthesis.negative?
   end
   if parenthesis == 0
     puts "верное кол-во скобок"
